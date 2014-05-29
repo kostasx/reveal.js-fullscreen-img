@@ -5,6 +5,12 @@ var BGR;
 
 function fullscreen(event) {
   var url = event.currentSlide.getAttribute("fullscreen-img");
+
+  if(!url && event.currentSlide.getElementsByClassName("fullscreen-img").length > 0) {
+    // Hack to allow us to specify fullscreen bleed images in Markdown
+    url = event.currentSlide.getElementsByClassName("fullscreen-img")[0].getAttribute("src");
+  }
+
   if(url) {
     if(typeof BGR == "undefined")
     {
