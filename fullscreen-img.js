@@ -3,12 +3,22 @@
 // TODO insert image with reveal transition
 var BGR;
 
+$(document).ready(function() {
+  // Hide all our fullscreen markdown images
+  $("img[alt='']").hide();
+});
+
 function fullscreen(event) {
   var url = event.currentSlide.getAttribute("fullscreen-img");
 
   if(!url && event.currentSlide.getElementsByClassName("fullscreen-img").length > 0) {
     // Hack to allow us to specify fullscreen bleed images in Markdown
     url = event.currentSlide.getElementsByClassName("fullscreen-img")[0].getAttribute("src");
+  }
+
+  // Also allow just setting an initial image with no alt tag to set fullscreen bg
+  if(!url && $(event.currentSlide).find("img[alt='']").length > 0) {
+    url = $(event.currentSlide).find("img[alt='']")[0].getAttribute("src");
   }
 
   if(url) {
