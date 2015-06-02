@@ -6,6 +6,7 @@ var BGR;
 $(document).ready(function() {
   // Hide all our fullscreen markdown images
   $("img[alt='']").hide();
+  $('section img[alt="Fullscreen"]').hide();
 });
 
 function fullscreen(event) {
@@ -17,8 +18,8 @@ function fullscreen(event) {
   }
 
   // Also allow just setting an initial image with no alt tag to set fullscreen bg
-  if(!url && $(event.currentSlide).find("img[alt='']").length > 0) {
-    url = $(event.currentSlide).find("img[alt='']")[0].getAttribute("src");
+  if(!url && $(event.currentSlide).find('img[alt="Fullscreen"]').length > 0) {
+    url = $(event.currentSlide).find('img[alt="Fullscreen"]')[0].getAttribute("src");
   }
 
   if(url) {
